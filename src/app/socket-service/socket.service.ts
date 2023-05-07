@@ -17,7 +17,7 @@ export class SocketService {
       username: String(String(localStorage.getItem("username")))
     }
 
-    this.ws = webSocket("ws://ideal-bells-production.up.railway.app/websocket?username="+params.username);
+    this.ws = webSocket("wss://ideal-bells-production.up.railway.app/websocket?username="+params.username);
 
     this.ws.asObservable().subscribe();
   }
