@@ -40,3 +40,25 @@
 .linkContent{
     margin-top: 1.5em;
 }
+@media screen and (max-width: 750px){
+    .form{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #f4f4f4;
+        width: 50%;
+        border: 1px #7b7b7b solid;
+    }
+}
+@media screen and (max-width: 450px){
+    .form{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #f4f4f4;
+        width: 80%;
+        border: 1px #7b7b7b solid;
+    }
+}
