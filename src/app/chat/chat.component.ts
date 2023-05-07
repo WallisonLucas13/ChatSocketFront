@@ -31,6 +31,8 @@ export class ChatComponent {
     this.username = String(localStorage.getItem("username"));
 
     this.formMessageToForum = new FormGroup({
+      from: new FormControl(this.username),
+      to: new FormControl("forum"),
       message: new FormControl("")
     })
 
@@ -63,9 +65,9 @@ export class ChatComponent {
   }
 
   sendMessage(){
-    this.formMessageToForum.addControl('from', new FormControl(this.username));
-    this.formMessageToForum.addControl('to', new FormControl("forum"));
-
+    this.formMessageToForum.patchValue({from: this.username});
+    this.formMessageToForum.patchValue({to: "forum"});
+    
     console.log(this.formMessageToForum.value);
     this.socketService?.send(this.formMessageToForum.value);
     this.formMessageToForum.reset(this.formMessageToForum);

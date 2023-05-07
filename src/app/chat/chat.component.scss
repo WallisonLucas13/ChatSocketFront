@@ -46,7 +46,7 @@
   justify-content: space-between;
 }
 .input{
-  width: 80%;
+  width: 70%;
 }
 input[type="text"]{
   border: none;
@@ -60,7 +60,6 @@ input[type="text"]{
   border: 1px #7b7b7b solid;
   border-radius: 5px;
   transition: 0.5s;
-  margin-right: 1em;
 }
 .enviarMessage button:hover{
   background-color: lightblue;
@@ -163,5 +162,13 @@ input[type="text"]{
   }
   .menu{
     display: block;
+  }
+  .input{
+    width: 70%;
+  }
+}
+@media screen and (max-width: 450px){
+  .input{
+    width: 50%;
   }
 }
