@@ -66,6 +66,7 @@ export class ChatComponent {
     this.formMessageToForum.addControl('from', new FormControl(this.username));
     this.formMessageToForum.addControl('to', new FormControl("forum"));
 
+    console.log(this.formMessageToForum.value);
     this.socketService?.send(this.formMessageToForum.value);
     this.formMessageToForum.reset(this.formMessageToForum);
   }
