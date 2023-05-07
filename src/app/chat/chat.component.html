@@ -1,0 +1,121 @@
+<mat-drawer-container class="example-container">
+
+    <mat-drawer mode="side" opened class="logMessages">
+        <mat-toolbar>
+            <span>{{username}}</span>
+            <span class="example-spacer"></span>
+            <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+                <mat-icon>account_circle</mat-icon>
+            </button>
+        </mat-toolbar>
+
+        <div class="usersOnline">
+            <h2 class="titleUsers">Usuários Online</h2>
+            <div *ngFor="let user of usersLogged">
+                <div class="userCard">
+                    <mat-icon>radio_button_checked</mat-icon>
+                    <img alt="profile" src="../../assets/profile.png">
+                    <h3>{{user}}</h3>
+                </div>
+            </div>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <div>
+            <h2 class="titleUsers">Usuários Offline</h2>
+            <div *ngFor="let user of usersOffline">
+                <div class="userCardOffline">
+                    <mat-icon>radio_button_checked</mat-icon>
+                    <img alt="profile" src="../../assets/profile.png">
+                    <h3>{{user}}</h3>
+                </div>
+            </div>
+        </div>
+
+    </mat-drawer>
+
+    <mat-drawer-content class="contentPrincipal">
+        <div class="forumNav">
+            <mat-toolbar>
+                <span>Fórum</span>
+                <span class="example-spacer"></span>
+                <div class="menu">
+                    <button [mat-menu-trigger-for]="menuUsers">
+                        <mat-icon [mat-menu-trigger-for]="menuUsers">menu</mat-icon>
+                    </button>
+                </div>
+            </mat-toolbar>
+        </div>
+
+        <div class="messageContent">
+
+            <div class="messageCard" *ngFor="let message of forumMessages">
+                <mat-card class="example-card">
+                    <mat-card-header class="card">
+                        <mat-card-subtitle>{{alterFrom(message.from)}}</mat-card-subtitle>
+                        <p>{{message.message}}</p>
+                    </mat-card-header>
+                </mat-card>
+            </div>
+
+        </div>
+
+        <div class="enviarMessageContent">
+            <form class="enviarMessage" [formGroup]="formMessageToForum">
+
+                <div class="input">
+                    <input type="text" placeholder="Envie uma mensagem" required formControlName="message">
+                </div>
+
+                <div>
+                    <button (click)="sendMessage()">Enviar</button>
+                </div>
+
+            </form>
+        </div>
+    </mat-drawer-content>
+
+    <mat-drawer mode="side" opened class="logMessages" position="end">
+        <mat-toolbar>
+            <span>Logs</span>
+            <span class="example-spacer"></span>
+            <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+                <mat-icon>menu</mat-icon>
+            </button>
+            &nbsp;
+            <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"
+                [matMenuTriggerFor]="menu">
+                <mat-icon style="color: darkgreen;">settings</mat-icon>
+            </button>
+        </mat-toolbar>
+
+        <div>
+
+            <div *ngFor="let log of logNotifyMessages">
+                <div class="logMessage">
+                    <h3>{{log}}</h3>
+                </div>
+            </div>
+
+        </div>
+    </mat-drawer>
+</mat-drawer-container>
+
+<mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="logout()">
+        <mat-icon style="color: red;">logout</mat-icon>
+        <span>Sair</span>
+    </button>
+</mat-menu>
+
+<mat-menu #menuUsers="matMenu">
+    <button mat-menu-item (click)="openDialogUsersAndroidView()">
+        <mat-icon>group</mat-icon>
+        <span>Usuários Online</span>
+    </button>
+    <button mat-menu-item (click)="openDialogUsersAndroidView()">
+        <mat-icon>rss_feed</mat-icon>
+        <span>Logs</span>
+    </button>
+</mat-menu>

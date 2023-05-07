@@ -1,0 +1,42 @@
+.content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 1.5em;
+}
+.content h2{
+    margin-bottom: 1.5em;
+    font-size: 18pt;
+    font-family: monospace;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f4f4f4;
+    width: 25%;
+    border: 1px #7b7b7b solid;
+}
+.formField{
+    margin-top: 1.5em;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+}
+.formField label{
+    margin-bottom: 1.5em;
+}
+.formField input[type="text"]{
+    margin-bottom: 1.5em;
+    border: none;
+    padding: 1em;
+}
+.formField button{
+    margin-bottom: 1.5em;
+}
+.linkContent{
+    margin-top: 1.5em;
+}

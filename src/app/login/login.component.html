@@ -1,0 +1,22 @@
+<div class="content">
+
+    <h2>Realize Login</h2>
+
+    <form [formGroup]="formLogin" class="form">
+
+        <div class="formField">
+            <label>Nome</label>
+            <input type="text" formControlName="nome">
+        </div>
+
+        <div class="formField">
+            <button (click)="login()">Login</button>
+        </div>
+
+    </form>
+
+    <div class="linkContent">
+        <p>Ainda não criou seu usuário? <a href="/register">Entre aqui</a></p>
+    </div>
+
+</div>

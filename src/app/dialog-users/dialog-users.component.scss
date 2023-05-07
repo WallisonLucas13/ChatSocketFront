@@ -1,0 +1,66 @@
+.content{
+    width: 300px;
+    height: 500px;
+}
+.toolbar{
+    width: 100%;
+    justify-content: space-between;
+}
+.titleUsers{
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 1.5em;
+  }
+  .userCard{
+    display: flex;
+    align-items: center;
+    margin-bottom: 1em;
+    background-color: #f4f4f4;
+    padding: 0.5em;
+  }
+  .userCard h3{
+    margin-left: 0.5em;
+    font-size: 16pt;
+    position: relative;
+    top: 5px;
+  }
+  .userCard mat-icon{
+    color: green;
+    font-size: 14pt;
+    position: relative;
+    top: 10px;
+  }
+  .userCard img{
+    border-radius: 50%;
+    width: 35px;
+    border: 1px #7b7b7b solid;
+    margin-left: 0.5em;
+  }
+  .userCardOffline{
+    display: flex;
+    align-items: center;
+    margin-bottom: 1em;
+    background-color: #f4f4f4;
+    padding: 0.1em;
+  }
+  .userCardOffline h3{
+    margin-left: 0.5em;
+    font-size: 14pt;
+    position: relative;
+    top: 5px;
+  }
+  .userCardOffline mat-icon{
+    color: gray;
+    font-size: 14pt;
+    position: relative;
+    top: 10px;
+  }
+  .userCardOffline img{
+    border-radius: 50%;
+    width: 25px;
+    border: 1px #7b7b7b solid;
+    margin-left: 0.5em;
+  }
+  .usersOnline{
+    margin-bottom: 3em;
+  }

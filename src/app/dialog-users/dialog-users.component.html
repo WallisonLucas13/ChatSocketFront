@@ -1,0 +1,41 @@
+<div class="content">
+
+    <mat-toolbar class="toolbar">
+
+        <span>{{username}}</span>
+            <span class="example-spacer"></span>
+            <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+                <mat-icon>account_circle</mat-icon>
+            </button>
+
+    </mat-toolbar>
+
+    <div>
+
+        <div class="usersOnline">
+            <h2 class="titleUsers">Usuários Online</h2>
+            <div *ngFor="let user of usersLogged">
+                <div class="userCard">
+                    <mat-icon>radio_button_checked</mat-icon>
+                    <img alt="profile" src="../../assets/profile.png">
+                    <h3>{{user}}</h3>
+                </div>
+            </div>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <div>
+            <h2 class="titleUsers">Usuários Offline</h2>
+            <div *ngFor="let user of usersOffline">
+                <div class="userCardOffline">
+                    <mat-icon>radio_button_checked</mat-icon>
+                    <img alt="profile" src="../../assets/profile.png">
+                    <h3>{{user}}</h3>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
