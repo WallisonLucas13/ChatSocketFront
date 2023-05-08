@@ -1,22 +1,23 @@
 <div class="content">
 
-    <h2>Realize Login</h2>
-
     <form [formGroup]="formLogin" class="form">
+
+        <h2>Realize Login</h2>
 
         <div class="formField">
             <label>Nome</label>
-            <input type="text" formControlName="nome">
+            <input type="text" formControlName="nome" placeholder="Insira o seu nome">
         </div>
 
         <div class="formField">
-            <button (click)="login()">Login</button>
+            <button (click)="login()">Entrar</button>
+        </div>
+
+        <div class="linkContent">
+            <p>Ainda não criou seu usuário? <a href="/register">Entre aqui</a></p>
         </div>
 
     </form>
 
-    <div class="linkContent">
-        <p>Ainda não criou seu usuário? <a href="/register">Entre aqui</a></p>
-    </div>
 
 </div>

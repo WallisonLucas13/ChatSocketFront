@@ -18,6 +18,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatDialogModule} from '@angular/material/dialog';
 import { DialogUsersComponent } from './dialog-users/dialog-users.component';
 import {MatDividerModule} from '@angular/material/divider';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {MatDividerModule} from '@angular/material/divider';
     MatMenuModule,
     MatCardModule,
     MatDialogModule,
-    MatDividerModule
+    MatDividerModule,
+    ToastrModule.forRoot(), 
   ],
   providers: [],
   bootstrap: [AppComponent]

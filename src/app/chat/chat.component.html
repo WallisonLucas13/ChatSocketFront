@@ -1,113 +1,104 @@
-<mat-drawer-container class="example-container">
+<mat-drawer-container class="example-container" [hasBackdrop]="hasBackdrop">
 
-    <mat-drawer mode="side" opened class="logMessages">
+    <mat-drawer opened [mode]="mode" class="contactDrawer" #contactDrawer>
         <mat-toolbar>
-            <span>{{username}}</span>
+
+            <span>Conversas</span>
             <span class="example-spacer"></span>
-            <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-                <mat-icon>account_circle</mat-icon>
-            </button>
+
+
+            <div class="buttonOpenDrawerByContact">
+                <button (click)="openSettingsDrawer(settingsDrawer)">
+                    <mat-icon>settings</mat-icon>
+                </button>
+            </div>
+
         </mat-toolbar>
 
-        <div class="usersOnline">
-            <h2 class="titleUsers">Usuários Online</h2>
-            <div *ngFor="let user of usersLogged">
-                <div class="userCard">
-                    <mat-icon>radio_button_checked</mat-icon>
-                    <img alt="profile" src="../../assets/profile.png">
-                    <h3>{{user}}</h3>
-                </div>
-            </div>
-        </div>
-
-        <mat-divider></mat-divider>
-
-        <div>
-            <h2 class="titleUsers">Usuários Offline</h2>
-            <div *ngFor="let user of usersOffline">
-                <div class="userCardOffline">
-                    <mat-icon>radio_button_checked</mat-icon>
-                    <img alt="profile" src="../../assets/profile.png">
-                    <h3>{{user}}</h3>
-                </div>
-            </div>
-        </div>
+        <footer>
+            <input type="text" placeholder="Encontre um usuário">
+        </footer>
 
     </mat-drawer>
 
     <mat-drawer-content class="contentPrincipal">
-        <div class="forumNav">
-            <mat-toolbar>
+
+        <div>
+            <mat-toolbar class="navToolbar">
+                <div class="androidMenuContactDrawer">
+                    <button (click)="contactDrawer.toggle()">
+                        <mat-icon>menu</mat-icon>
+                    </button>
+                </div>
+                <div class="androidMenuSettingsDrawer">
+                    <button (click)="settingsDrawer.toggle()">
+                        <mat-icon>settings</mat-icon>
+                    </button>
+                </div>
+
                 <span>Fórum</span>
                 <span class="example-spacer"></span>
-                <div class="menu">
-                    <button [mat-menu-trigger-for]="menuUsers">
-                        <mat-icon [mat-menu-trigger-for]="menuUsers">menu</mat-icon>
+
+                <div>
+                    <button>
+                        <mat-icon>rss_feed</mat-icon>
                     </button>
                 </div>
             </mat-toolbar>
         </div>
 
         <div class="messageContent">
-
             <div class="messageCard" *ngFor="let message of forumMessages">
                 <mat-card class="example-card">
                     <mat-card-header class="card">
-                        <mat-card-subtitle>{{alterFrom(message.from)}}</mat-card-subtitle>
-                        <p>{{message.message}}</p>
+                        <img alt="profile" src="../../assets/profile.png">
+                        <div class="descCardMessage">
+                            <mat-card-subtitle style="color: #f4f4f4;">{{alterFrom(message.from)}}</mat-card-subtitle>
+                            <p>{{message.message}}</p>
+                        </div>
                     </mat-card-header>
                 </mat-card>
             </div>
-
         </div>
 
         <div class="enviarMessageContent">
             <form class="enviarMessage" [formGroup]="formMessageToForum">
+
+                <mat-divider style="color: #222;"></mat-divider>
 
                 <div class="input">
                     <input type="text" placeholder="Envie uma mensagem" required formControlName="message">
                 </div>
 
                 <div>
-                    <button (click)="sendMessage()">Enviar</button>
+                    <mat-icon (click)="sendMessage()">send</mat-icon>
                 </div>
 
             </form>
         </div>
     </mat-drawer-content>
 
-    <mat-drawer mode="side" opened class="logMessages" position="end">
-        <mat-toolbar>
-            <span>Logs</span>
-            <span class="example-spacer"></span>
-            <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-                <mat-icon>menu</mat-icon>
+    <mat-drawer #settingsDrawer [mode]="mode" class="settingsDrawer" position="end">
+
+        <div class="headerSettings">
+            <mat-icon>settings</mat-icon>
+            <h2>Configurações</h2>
+        </div>
+
+        <div class="perfilUser">
+            <img alt="profile" src="../../assets/profile.png">
+            <span>{{username}}</span>
+        </div>
+
+        <div class="actionsSettings">
+            <button class="sairButton" (click)="logout()">
+                <span>Sair</span>
+                <mat-icon>logout</mat-icon>
             </button>
-            &nbsp;
-            <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"
-                [matMenuTriggerFor]="menu">
-                <mat-icon style="color: darkgreen;">settings</mat-icon>
-            </button>
-        </mat-toolbar>
-
-        <div>
-
-            <div *ngFor="let log of logNotifyMessages">
-                <div class="logMessage">
-                    <h3>{{log}}</h3>
-                </div>
-            </div>
-
         </div>
     </mat-drawer>
-</mat-drawer-container>
 
-<mat-menu #menu="matMenu">
-    <button mat-menu-item (click)="logout()">
-        <mat-icon style="color: red;">logout</mat-icon>
-        <span>Sair</span>
-    </button>
-</mat-menu>
+</mat-drawer-container>
 
 <mat-menu #menuUsers="matMenu">
     <button mat-menu-item (click)="openDialogUsersAndroidView()">
@@ -119,3 +110,20 @@
         <span>Logs</span>
     </button>
 </mat-menu>
+<ng-template>
+    <mat-drawer #logDrawer mode="side" class="logDrawer" position="end">
+        <mat-toolbar>
+            <span>Logs</span>
+            <span class="example-spacer"></span>
+            <mat-icon>rss_feed</mat-icon>
+        </mat-toolbar>
+
+        <div>
+            <div *ngFor="let log of logNotifyMessages">
+                <div class="logMessage">
+                    <h3>{{log}}</h3>
+                </div>
+            </div>
+        </div>
+    </mat-drawer>
+</ng-template>

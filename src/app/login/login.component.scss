@@ -1,14 +1,17 @@
 .content{
+    background-color: #2d3436;
+    background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%);
+    height: 100%;
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
-    margin-top: 1.5em;
+    align-items: center;
+    overflow-y: hidden;
 }
 .content h2{
-    margin-bottom: 1.5em;
-    font-size: 18pt;
     font-family: monospace;
+    color: #f4f4f4;
+    font-size: 20pt;
+    font-weight: bold;
 }
 
 .form{
@@ -16,9 +19,19 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #f4f4f4;
+    background-color: transparent;
     width: 25%;
-    border: 1px #7b7b7b solid;
+    margin-top: 3em;
+    padding: 2.5em;
+    transition: 1s;
+    border-top: 1px #7b7b7b solid;
+    border-bottom: 1px #7b7b7b solid;
+}
+.form:hover{
+    transform: scale(1.1);
+    background-color: #2d3436;
+    background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%);
+    margin-top: 5em;
 }
 .formField{
     margin-top: 1.5em;
@@ -28,37 +41,68 @@
 }
 .formField label{
     margin-bottom: 1.5em;
+    color: #f4f4f4;
+    font-weight: bold;
+    font-size: 15pt;
+    font-family: monospace;
 }
 .formField input[type="text"]{
     margin-bottom: 1.5em;
     border: none;
-    padding: 1em;
+    padding: 1.5em;
+    background-color: transparent;
+    border-bottom: 1px #f4f4f4 solid;
+    color: #f4f4f4;
+}
+.formField input[type="text"]:focus{
+    border: none;
+    border-bottom: 1px #f4f4f4 solid;
+    outline: none;
+    box-shadow: 0 0 0 0;
 }
 .formField button{
     margin-bottom: 1.5em;
+    padding: 0.5em 1em;
+    border: 1px #7b7b7b solid;
+    border-radius: 10px;
+    background-color: transparent;
+    color: #f4f4f4;
+    transition: 1s;
+}
+.formField button:hover{
+    transform: scale(1.1);
+    background-color: #2d3436;
+    background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%);
+    cursor: pointer;
 }
 .linkContent{
     margin-top: 1.5em;
 }
-@media screen and (max-width: 750px){
+.linkContent p{
+    color: #7b7b7b;
+    font-size: 12pt;
+}
+.linkContent a{
+    text-decoration: none;
+}
+@media screen and (max-width: 1000px){
     .form{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        background-color: #f4f4f4;
-        width: 50%;
-        border: 1px #7b7b7b solid;
+       width: 50%;
+    }
+}
+@media screen and (max-width: 650px){
+    .form{
+        width: 70%;
     }
 }
 @media screen and (max-width: 450px){
     .form{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        background-color: #f4f4f4;
-        width: 80%;
-        border: 1px #7b7b7b solid;
+        width: 90%;
+        background-color: #2d3436;
+        background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%);
+        margin-top: 5em;
+    }
+    .form:hover{
+       transform: none;
     }
 }

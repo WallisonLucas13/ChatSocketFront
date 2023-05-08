@@ -2,26 +2,103 @@
     border: 1px solid #555;
     width: 100%;
     height: 100%;
+    background-color: #2d3436;
+    background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%);
   }
   .example-card{
     border: none;
+    outline: none;
+    box-shadow: 0 0 0 0;
     max-width: 100%;
     border-radius: 0;
+    background-color: transparent;
+    color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+  }
+  .contentPrincipal{
+    background-color: transparent;
   }
   .contentPrincipal::-webkit-scrollbar {
-    width: 15px; 
-  }
-  
-  .contentPrincipal::-webkit-scrollbar-track {
-    background-color: #f4f4f4;
-  }
-  
-  .contentPrincipal::-webkit-scrollbar-thumb {
-    background: white;
-    border-radius: 5px;
-  }
-.logMessages{
-    width: 350px;
+    width: 10px;
+}
+
+.contentPrincipal::-webkit-scrollbar-track {
+    background: #222;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.contentPrincipal::-webkit-scrollbar-thumb {
+    background: #a55c1b;
+    border-radius: 10px;
+}
+
+.contentPrincipal::-webkit-scrollbar-thumb:hover {
+    background: rgb(100, 100, 100);
+    border-radius: 10px;
+}
+
+.contentPrincipal::-webkit-scrollbar-thumb:active {
+    background: rgb(68, 68, 68);
+    border-radius: 10px;
+}
+.contactDrawer{
+    width: 450px;
+    background-color: transparent;
+    overflow-x: hidden;
+    border-right: 1px #f4f4f4 solid;
+}
+.contactDrawer mat-toolbar{
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px #f4f4f4 solid;
+}
+.contactDrawer mat-toolbar button{
+  border-radius: 10px;
+  font-size: 19pt;
+  color: #756213;
+  background-color: #222;
+}
+.contactDrawer mat-toolbar span{
+  color: #756213;
+  font-weight: bold;
+  font-family: monospace;
+  margin-left: 1.5em;
+  font-size: 19pt;
+}
+.contactDrawer footer{
+  width: 100%;
+  bottom: 0;
+  margin-top: 2.5em;
+  position: absolute;
+  background-color: #222;
+}
+.contactDrawer footer input[type="text"]{
+  border: none;
+  width: 100%;
+  background-color: transparent;
+  padding: 1.5em 0;
+  margin-left: 1.5em;
+}
+.contactDrawer footer input[type="text"]:focus{
+  border: none;
+  outline: none;
+  box-shadow: 0 0 0 0;
+  color: #756213;
+}
+.logDrawer{
+  width: 250px;
+  background-color: #756213;
+  background-image: linear-gradient(315deg, #756213 0%, #000000 74%);
+}
+.logDrawer mat-toolbar{
+  background-color: transparent;
+  color: #756213;
+  font-size: 19pt;
+  font-weight: bold;
+  font-family: monospace;
 }
 .example-spacer {
     flex: 1 1 auto;
@@ -30,145 +107,212 @@
 .logMessage{
   margin-left: 1.5em;
   margin-top: 1em;
+  color: #f4f4f4;
 }
 
 .enviarMessageContent{
   width: 100%;
   bottom: 0;
-  margin-bottom: 0.5em;
   margin-top: 2.5em;
   position: sticky;
-  background-color: #f4f4f4;
+  background-color: #222;
 }
 .enviarMessage{
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  width: 100%;
+  background-color: transparent;
 }
 .input{
-  width: 70%;
-}
-input[type="text"]{
-  border: none;
-  padding: 1.5em;
   width: 100%;
-  background-color: #f4f4f4;
 }
-.enviarMessage button{
-  padding: 0.5em 1em;
-  background-color: #f4f4f4;
-  border: 1px #7b7b7b solid;
-  border-radius: 5px;
+.enviarMessage mat-icon{
+  margin-right: 1.5em;
+  margin-left: 1.5em;
+  font-size: 20pt;
+  color: #a55c1b;
+}
+.input input[type="text"]{
+  border: none;
+  width: 100%;
+  background-color: transparent;
+  padding: 1.5em 0;
+  margin-left: 1.5em;
+}
+.input input[type="text"]:focus{
+  border: none;
+  outline: none;
+  box-shadow: 0 0 0 0;
+  color: #a55c1b;
+}
+
+.navToolbar{
+  color: #a55c1b;
+  font-size: 19pt;
+  font-weight: bold;
+  background-color: transparent;
+  font-family: monospace;
+  border-bottom: 1px #f4f4f4 solid;
+  display: flex;
+  align-items: center;
+}
+.navToolbar span{
+  margin-left: 1.5em;
+}
+.navToolbar button{
+  background-color: #222;
+  color: #a55c1b;
+  border-radius: 10px;
+  font-size: 19pt;
   transition: 0.5s;
-}
-.enviarMessage button:hover{
-  background-color: lightblue;
   cursor: pointer;
+}
+.navToolbar button:hover{
   transform: scale(1.1);
-}
-.titleUsers{
-  text-align: center;
-  margin-top: 1.5em;
-}
-.userCard{
-  display: flex;
-  align-items: center;
-  margin-bottom: 1em;
-  background-color: #f4f4f4;
-  padding: 0.5em;
-}
-.userCard h3{
-  margin-left: 0.5em;
-  font-size: 16pt;
-  position: relative;
-  top: 5px;
-}
-.userCard mat-icon{
-  color: green;
-  font-size: 14pt;
-  position: relative;
-  top: 10px;
-}
-.userCard img{
-  border-radius: 50%;
-  width: 35px;
-  border: 1px #7b7b7b solid;
-  margin-left: 0.5em;
-}
-.userCardOffline{
-  display: flex;
-  align-items: center;
-  margin-bottom: 1em;
-  background-color: #f4f4f4;
-  padding: 0.1em;
-}
-.userCardOffline h3{
-  margin-left: 0.5em;
-  font-size: 14pt;
-  position: relative;
-  top: 5px;
-}
-.userCardOffline mat-icon{
-  color: gray;
-  font-size: 14pt;
-  position: relative;
-  top: 10px;
-}
-.userCardOffline img{
-  border-radius: 50%;
-  width: 25px;
-  border: 1px #7b7b7b solid;
-  margin-left: 0.5em;
-}
-.forumNav{
-  position: sticky;
-  top: 0;
-  z-index: 1000;
 }
 .messageCard{
   border: none;
+  outline: none;
+  box-shadow: 0 0 0 0;
+  margin-top: 1.5em;
+}
+.messageContent{
+  border: 1px transparent solid;
 }
 .card{
   display: flex;
-  flex-direction: column;
-  max-width: 100%;
-  word-wrap: break-word;
+  flex-direction: row;
+  color: #f4f4f4;
+  align-items:self-end;
+  background-color: transparent;
+  border: 1px transparent solid;
 }
+.descCardMessage{
+  display: flex;
+  flex-direction: column;
+  max-width: 80%;
+  word-wrap: break-word;
+  margin-left: 1.5em;
+  background-color: #222;
+  padding: 0.5em 1em;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+.card img{
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  border: 1px #7b7b7b solid;
+  margin-bottom: 1em;
+}
+
 .menu{
   display: none;
 }
 .usersOnline{
   margin-bottom: 3em;
 }
+.settingsDrawer{
+  background-color: transparent;
+  width: 280px;
+}
+.headerSettings{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.5em;
+}
+.headerSettings mat-icon{
+  color: #756213;
+  font-size: 19pt;
+  margin-left: 1em;
+}
+.headerSettings h2 {
+  font-size: 19pt;
+  font-weight: bold;
+  font-family: monospace;
+  color: #756213;
+  margin-left: 1em;
+  text-align: center;
+  margin: auto;
+}
+.actionsSettings{
+  margin-top: 6em;
+}
+.sairButton{
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: red;
+  background-color: #2d3436;
+  padding: 0.5em 2em;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border: none;
+  transition: 0.5s;
+}
+.sairButton:hover{
+  transform: scale(1.1);
+  border: 1px red solid;
+  margin-left: 1em;
+  cursor: pointer;
+}
+.sairButton span{
+  margin-right: 1em;
+  font-size: 15pt;
+}
+.sairButton mat-icon{
+  font-size: 19pt;
+}
+.perfilUser{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 3em;
+  align-items: center;
+}
+.perfilUser img{
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+}
+.perfilUser span{
+  margin-top: 1.5em;
+  color: #756213;
+  font-family: monospace;
+  font-size: 19pt;
+  font-weight: bold;
+}
+.androidMenuContactDrawer,.androidMenuSettingsDrawer{
+  display: none;
+}
+.buttonOpenDrawerByContact{
+  display: block;
+}
 
-@media screen and (max-width: 1200px){
-  .logMessages{
-    width: 280px;
-  }
-}
-@media screen and (max-width: 950px){
-  .logMessages{
-    width: 250px;
-  }
-}
-@media screen and (max-width: 750px){
-  .logMessages{
-    width: 180px;
-  }
-}
-@media screen and (max-width: 650px){
-  .logMessages{
+@media screen and (max-width: 900px){
+
+  .buttonOpenDrawerByContact{
     display: none;
   }
-  .menu{
+
+  .androidMenuContactDrawer, .androidMenuSettingsDrawer{
     display: block;
+    margin-left: 1em;
   }
-  .input{
-    width: 70%;
+  .contactDrawer{
+    width: 300px;
+    background-color: #2d3436;
+    background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%);
+    border: none;
   }
-}
-@media screen and (max-width: 450px){
-  .input{
-    width: 50%;
+  .settingsDrawer{
+    background-color: #2d3436;
+    background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%);
+    border: none;
+    width: 300px;
   }
 }

@@ -5,6 +5,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 import Message from '../models/Message';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogUsersComponent } from '../dialog-users/dialog-users.component';
+import {BreakpointObserver, Breakpoints, MediaMatcher} from '@angular/cdk/layout';
+import { MatDrawerMode } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-chat',
@@ -20,8 +22,22 @@ export class ChatComponent {
   formMessageToForum: FormGroup = new FormGroup({});
   forumMessages: Message[] = [];
   private socketService: SocketService | undefined;
+  dataLogDrawer: boolean = false;
+  dataSettingsDrawer: boolean = false;
+  androidView: boolean = false;
+  hasBackdrop: boolean = false;
+  mode: MatDrawerMode = "side";
 
-  constructor(private dialog: MatDialog){
+  constructor(private dialog: MatDialog, observer: BreakpointObserver){
+
+    observer.observe([
+      Breakpoints.HandsetLandscape,
+      Breakpoints.HandsetPortrait
+    ]).subscribe(result => {
+      if (result.matches) {
+        this.setConfigForAndroidView();
+      }
+    });
 
     if(!localStorage.getItem("username")){
       location.replace("/login");
@@ -95,10 +111,28 @@ export class ChatComponent {
     }
     return from;
   }
+  openLogDrawer(drawer: any){
+    drawer.toggle();
+
+    this.dataSettingsDrawer = false;
+    this.dataLogDrawer = true;
+  }
+  openSettingsDrawer(drawer: any){
+    drawer.toggle();
+    
+    this.dataLogDrawer = false;
+    this.dataSettingsDrawer = true;
+  }
 
   openDialogUsersAndroidView(){
     this.dialog.open(DialogUsersComponent, {
       data: {usersLogged: this.usersLogged, usersOffline: this.usersOffline}
     })
+  }
+
+  setConfigForAndroidView(){
+    this.hasBackdrop = true;
+    this.mode = "over";
+    console.log("isAndroid");
   }
 }
