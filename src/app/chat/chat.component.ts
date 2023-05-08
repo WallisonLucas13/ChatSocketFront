@@ -22,11 +22,9 @@ export class ChatComponent {
   formMessageToForum: FormGroup = new FormGroup({});
   forumMessages: Message[] = [];
   private socketService: SocketService | undefined;
-  dataLogDrawer: boolean = false;
-  dataSettingsDrawer: boolean = false;
-  androidView: boolean = false;
   hasBackdrop: boolean = false;
   mode: MatDrawerMode = "side";
+  opened: boolean = true;
 
   constructor(private dialog: MatDialog, observer: BreakpointObserver){
 
@@ -83,8 +81,7 @@ export class ChatComponent {
   sendMessage(){
     this.formMessageToForum.patchValue({from: this.username});
     this.formMessageToForum.patchValue({to: "forum"});
-    
-    console.log(this.formMessageToForum.value);
+  
     this.socketService?.send(this.formMessageToForum.value);
     this.formMessageToForum.reset(this.formMessageToForum);
   }
@@ -113,15 +110,9 @@ export class ChatComponent {
   }
   openLogDrawer(drawer: any){
     drawer.toggle();
-
-    this.dataSettingsDrawer = false;
-    this.dataLogDrawer = true;
   }
   openSettingsDrawer(drawer: any){
     drawer.toggle();
-    
-    this.dataLogDrawer = false;
-    this.dataSettingsDrawer = true;
   }
 
   openDialogUsersAndroidView(){
@@ -134,5 +125,6 @@ export class ChatComponent {
     this.hasBackdrop = true;
     this.mode = "over";
     console.log("isAndroid");
+    this.opened = false;
   }
 }

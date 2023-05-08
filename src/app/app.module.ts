@@ -19,6 +19,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { DialogUsersComponent } from './dialog-users/dialog-users.component';
 import {MatDividerModule} from '@angular/material/divider';
 import { ToastrModule } from 'ngx-toastr';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { ToastrModule } from 'ngx-toastr';
     MatDialogModule,
     MatDividerModule,
     ToastrModule.forRoot(), 
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

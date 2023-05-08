@@ -1,6 +1,6 @@
 <mat-drawer-container class="example-container" [hasBackdrop]="hasBackdrop">
 
-    <mat-drawer opened [mode]="mode" class="contactDrawer" #contactDrawer>
+    <mat-drawer [opened]="opened" [mode]="mode" class="contactDrawer" #contactDrawer>
         <mat-toolbar>
 
             <span>Conversas</span>
@@ -47,7 +47,7 @@
             </mat-toolbar>
         </div>
 
-        <div class="messageContent">
+        <div class="messageContent" *ngIf="forumMessages.length != 0;else spinner">
             <div class="messageCard" *ngFor="let message of forumMessages">
                 <mat-card class="example-card">
                     <mat-card-header class="card">
@@ -100,16 +100,6 @@
 
 </mat-drawer-container>
 
-<mat-menu #menuUsers="matMenu">
-    <button mat-menu-item (click)="openDialogUsersAndroidView()">
-        <mat-icon>group</mat-icon>
-        <span>Usuários Online</span>
-    </button>
-    <button mat-menu-item (click)="openDialogUsersAndroidView()">
-        <mat-icon>rss_feed</mat-icon>
-        <span>Logs</span>
-    </button>
-</mat-menu>
 <ng-template>
     <mat-drawer #logDrawer mode="side" class="logDrawer" position="end">
         <mat-toolbar>
@@ -126,4 +116,8 @@
             </div>
         </div>
     </mat-drawer>
+</ng-template>
+
+<ng-template #spinner>
+    <mat-spinner class="spinner" diameter="50" color="primary"></mat-spinner>
 </ng-template>
